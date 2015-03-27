@@ -18,12 +18,17 @@ deg2y<-function(lat_deg, lon_deg, zoom){
 downloadOSMTiles<-function(outputdir,zoomlow=NA,zoomhigh=NA,maxlat=NA,minlat=NA,maxlon=NA,minlon=NA){
   if(is.na(zoomlow)||is.na(zoomhigh)||!is.numeric(zoomhigh)||!is.numeric(zoomlow)){
    cat("Please enter valid integers for the zoom range") 
+   return
+  }
+  if((maxlat>=85)||(minlat<=-85)||(maxlon>175)||(minlon<=-175)){
+    cat("Please specify bounding box values within the following range: \n Latitude : -85 < 85 \n Longitude -175 < 175")
   }
   else{
   if(is.numeric(zoomlow)&&is.numeric(zoomhigh)){
   zoomrange = c(zoomlow:zoomhigh)
   rangelength = zoomhigh-zoomlow
   }
+  #check lat long values to make sure they are in possible ranges
 #create sub-directories for each specified zoom level
   dir.create(path=paste("~/",outputdir,sep=""),showWarnings=F)
   for(i in 1:length(zoomrange)){
