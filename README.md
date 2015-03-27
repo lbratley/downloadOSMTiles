@@ -7,5 +7,7 @@ An R Script that lets a user download OpenStreetMap tiles to their device. I dec
 * **minzoom:** The minimum zoom level to download tiles. Please bear in mind that OpenStreetMap will not let you download tiles at zoom levels above 16, because they are not ready rendered. See [this post](http://wiki.openstreetmap.org/wiki/Tile_usage_policy). Please also note that for large zoom levels, there may be many tiles, and therefore the downloads could take a long time.
 * **maxzoom:** The highest desired zoom level.
 * **maxlat,minlat,maxlon,minlon:** WGS84 coordinates (i.e., latitude and longitude decimals) that specify a bounding box for desired tiles. If this bounding box is very large, the downloads will take a very long time for high zoom levels.
-
+##Example usage
+`downloadOSMTiles("Desktop/Liverpool",zoomlow = 13,zoomhigh=14,maxlat=53.5,minlat=53.3,maxlon=-2.8,minlon=-3.1)`
+The above example takes about 100 seconds to complete the download of street level OSM tiles for a bounding box that approximates the area surrounding Liverpool, UK.
 
